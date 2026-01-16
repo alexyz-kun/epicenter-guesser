@@ -34,6 +34,9 @@ func _handle_drag(event: InputEventMouseMotion):
 
 
 func _smooth_out_rotation(delta: float):
+	if rotatable == null:
+		return
+	
 	curr_rotation = UtilMath.delta_lerp_vec2(curr_rotation, target_rotation, 16, delta)
 	
 	var delta_rotation: Vector2 = target_rotation - curr_rotation

@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://ct5n3sf2yuh5r"]
+
+[ext_resource type="Script" uid="uid://dwb1xcmouq4ph" path="res://scripts/scene_level/scr_level_planet_wave.gd" id="1_faepm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i2ssx"]
+cull_mode = 2
+
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_5rs17"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_78p3c"]
+radius = 0.005
+height = 0.01
+
+[node name="PlanetWave" type="MeshInstance3D"]
+material_override = SubResource("StandardMaterial3D_i2ssx")
+mesh = SubResource("ImmediateMesh_5rs17")
+skeleton = NodePath("../..")
+script = ExtResource("1_faepm")
+
+[node name="Debug_WaveFront" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("SphereMesh_78p3c")

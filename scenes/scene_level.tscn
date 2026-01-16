@@ -1,11 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://dobb8dmhdq64d"]
+[gd_scene load_steps=10 format=3 uid="uid://dobb8dmhdq64d"]
 
-[ext_resource type="Script" uid="uid://gowsicbgefx8" path="res://scripts/scenes/scr_scene_level.gd" id="1_5rs17"]
-[ext_resource type="Texture2D" uid="uid://b0ouqr32vcf40" path="res://textures/tex_example.png" id="1_76qo3"]
-[ext_resource type="Script" uid="uid://20ppco8h7v2e" path="res://scripts/scene_level/scr_level_planet.gd" id="2_5rs17"]
-[ext_resource type="Script" uid="uid://ba52k6cyehsdi" path="res://scripts/controllers/scr_controller_first_person.gd" id="5_i2ssx"]
-[ext_resource type="Texture2D" uid="uid://c8iv8mryio243" path="res://textures/tex_earth_day.png" id="6_sihf1"]
-[ext_resource type="Script" uid="uid://pbixlo24olnm" path="res://scripts/controllers/scr_controller_rotatable.gd" id="7_2alv1"]
+[ext_resource type="Script" uid="uid://gowsicbgefx8" path="res://scripts/scenes/scr_scene_level.gd" id="1_voka6"]
+[ext_resource type="Script" uid="uid://20ppco8h7v2e" path="res://scripts/scene_level/scr_level_planet.gd" id="2_20ppl"]
+[ext_resource type="Script" uid="uid://pbixlo24olnm" path="res://scripts/controllers/scr_controller_rotatable.gd" id="3_ic11q"]
+[ext_resource type="Texture2D" uid="uid://c8iv8mryio243" path="res://textures/tex_earth_day.png" id="4_swruo"]
+[ext_resource type="Script" uid="uid://ba52k6cyehsdi" path="res://scripts/controllers/scr_controller_first_person.gd" id="5_ymgmg"]
+[ext_resource type="Texture2D" uid="uid://b0ouqr32vcf40" path="res://textures/tex_example.png" id="6_urbar"]
 
 [sub_resource type="Environment" id="Environment_76qo3"]
 ambient_light_source = 2
@@ -15,16 +15,13 @@ ssao_enabled = true
 [sub_resource type="SphereMesh" id="SphereMesh_i2ssx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tom1p"]
-albedo_texture = ExtResource("6_sihf1")
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.5019608)
+albedo_texture = ExtResource("4_swruo")
 normal_enabled = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i2ssx"]
-cull_mode = 2
-
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_5rs17"]
-
 [node name="SceneLevel" type="Node3D"]
-script = ExtResource("1_5rs17")
+script = ExtResource("1_voka6")
 
 [node name="Node3D" type="Node3D" parent="."]
 
@@ -33,23 +30,18 @@ transform = Transform3D(1, 0, 0, 0, 0.9518195, 0.30665895, 0, -0.30665895, 0.951
 environment = SubResource("Environment_76qo3")
 
 [node name="Planet" type="Node3D" parent="Node3D"]
-script = ExtResource("2_5rs17")
+script = ExtResource("2_20ppl")
 
 [node name="ControllerRotatable" type="Node3D" parent="Node3D/Planet"]
-script = ExtResource("7_2alv1")
+script = ExtResource("3_ic11q")
 
 [node name="PlanetMesh" type="MeshInstance3D" parent="Node3D/Planet"]
-visible = false
 mesh = SubResource("SphereMesh_i2ssx")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_tom1p")
 
-[node name="WaveMesh" type="MeshInstance3D" parent="Node3D/Planet"]
-material_override = SubResource("StandardMaterial3D_i2ssx")
-mesh = SubResource("ImmediateMesh_5rs17")
-
 [node name="FirstPerson" type="Node3D" parent="Node3D"]
-script = ExtResource("5_i2ssx")
+script = ExtResource("5_ymgmg")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -71,5 +63,5 @@ offset_top = 173.0
 offset_bottom = 286.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_76qo3")
+texture = ExtResource("6_urbar")
 stretch_mode = 5

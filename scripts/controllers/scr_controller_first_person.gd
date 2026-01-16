@@ -16,10 +16,6 @@ var speed: float
 
 # Base methods
 
-func _ready() -> void:
-	pass
-
-
 func _process(delta: float) -> void:
 	_handle_camera_angle(delta)
 	_handle_position(delta)

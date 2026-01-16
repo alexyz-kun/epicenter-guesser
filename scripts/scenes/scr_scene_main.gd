@@ -14,7 +14,7 @@ func _ready() -> void:
 	
 	manager.set_up()
 	
-	var new_scene_prefab: PackedScene = load(manager.resource.scene.example)
+	var new_scene_prefab: PackedScene = load(manager.resource.scene.level)
 	var new_scene: Node3D = new_scene_prefab.instantiate()
 	active_scene_parent.add_child(new_scene)
 	
